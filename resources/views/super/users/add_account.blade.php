@@ -18,7 +18,13 @@
                       <div class="input-group-prepend">
                         <div class="input-group-text">Username</div>
                       </div>
-                      <input type="name" name="name" required class="form-control" id="inlineFormInputGroupUsername2" placeholder="Enter name">
+                      <input type="text" name="name" required class="form-control" id="inlineFormInputGroupUsername2" placeholder="Enter name">
+                    </div>
+                    <div class="input-group mb-2 mr-sm-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">Phone Number</div>
+                      </div>
+                      <input type="text" name="phone" required class="form-control" id="inlineFormInputGroupUsername2" placeholder="Enter phone number">
                     </div>
                     <div class="input-group mb-2 mr-sm-2">
                       <div class="input-group-prepend">

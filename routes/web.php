@@ -213,6 +213,11 @@ Route::get('/backups', [BackupController::class, 'backups']);
 Route::get('/users', [UsersController::class, 'users']);
 Route::get('/add-account', [UsersController::class, 'add_account']);
 Route::post('/add-new-account', [UsersController::class, 'add_new_account']);
+Route::post('/send-sms', [UsersController::class, 'send'])->name('send.sms');
+Route::put('/users/{id}', [UsersController::class, 'update'])->name('users.update');
+Route::get('/delete-users/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
+Route::post('/send-bulk-sms', [UsersController::class, 'sendBulkSMS'])->name('send.bulk.sms');
+
 
 
 //HelpDesk
