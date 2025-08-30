@@ -255,6 +255,8 @@ Route::get('/delete-department/{id}', [DepartmentController::class, 'deletedepar
 //Stores
 Route::get('/stores-dashboard', [StoresController::class, 'stores_dashboard']);
 Route::get('/stores-in-stock', [StoresController::class, 'stores_in_stock']);
+Route::post('/stocks/store', [StoresController::class, 'store'])->name('stocks.store');
+Route::get('/stocks/data', [StoresController::class, 'getStocks'])->name('stocks.data');
 Route::get('stores-out-stock', [StoresController::class, 'stores_out_stock']);
 
 

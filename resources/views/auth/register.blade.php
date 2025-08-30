@@ -44,6 +44,17 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label>Phone</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="mdi mdi-account-outline text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="phone" required class="form-control form-control-lg border-left-0" placeholder="Phone Number">
+                  </div>
+                </div>
+                <div class="form-group">
                   <label>Svc #</label>
                   <div class="input-group">
                     <div class="input-group-prepend bg-transparent">

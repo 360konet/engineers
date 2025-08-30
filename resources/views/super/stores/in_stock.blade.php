@@ -9,41 +9,44 @@
                 <div class="card-body">
                   <h4 class="card-title">In-Stock Portal</h4>
                   <p class="card-description">Welcome to the in-stock portal to register new stocks in-take</p>
-                  <form class="form-inline" action="#" method="POST"  enctype="multipart/form-data">
-                    @csrf
-                   <label class="sr-only" for="inlineFormInputGroupUsername2">Project Name</label>
-                   <div class="input-group mb-2 mr-sm-2">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">Category</div>
+                  <form class="form-inline" action="{{ route('stocks.store') }}" method="POST" enctype="multipart/form-data">
+                      @csrf
+                  
+                      <div class="input-group mb-2 mr-sm-2">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text">Category</div>
+                          </div>
+                          <select name="category" required class="form-control">
+                              <option value="">--Select Category--</option>
+                              <option value="Electronic">Electronic</option>
+                              <option value="Non-Electronic">Non-Electronic</option>
+                          </select>
                       </div>
-                      <select name="" required class="form-control" id="inlineFormInputGroupUsername2">
-                        <option value="">--Select Category--</option>
-                        <option value="Electronic">Electronic</option>
-                        <option value="Non-Electronic">Non-Electronic</option>
-                      </select>
-                    </div>
-                    <div class="input-group mb-2 mr-sm-2">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">Serial</div>
+                  
+                      <div class="input-group mb-2 mr-sm-2">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text">Serial</div>
+                          </div>
+                          <input name="serial" required class="form-control" placeholder="Enter Serial No">
                       </div>
-                      <input name="" required class="form-control" id="inlineFormInputGroupUsername2" placeholder="Enter Serial No">
-                    </div>
-                    <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-                    
-                    <div class="input-group mb-2 mr-sm-2">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">Product</div>
+                  
+                      <div class="input-group mb-2 mr-sm-2">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text">Product</div>
+                          </div>
+                          <input name="product" required class="form-control" placeholder="Enter Product Name">
                       </div>
-                      <input name="" required class="form-control" id="inlineFormInputGroupUsername2" placeholder="Enter Product Name">
-                    </div>
-                    <div class="input-group mb-2 mr-sm-2">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">Product Image</div>
+                  
+                      <div class="input-group mb-2 mr-sm-2">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text">Product Image</div>
+                          </div>
+                          <input class="form-control" required name="project_file" type="file">
                       </div>
-                      <input class="form-control" required name="project_file" type="file" placeholder="Enter Project file">
-                    </div>
-                    <button type="submit" class="btn btn-primary mb-2">Add Stock</button>
+                  
+                      <button type="submit" class="btn btn-primary mb-2">Add Stock</button>
                   </form>
+
                 </div>
               </div>
             </div>
@@ -51,36 +54,25 @@
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">In-Stocks  <input type="text"  style="float:right" id="searchInput" placeholder="Search stock..."></h4> 
+                  <h4 class="card-title">In-Stocks</h4> 
                   <div class="table-responsive">
-                  <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>
-                            Image
-                          </th>
-                          <th>
-                            Serial No
-                          </th>
-                          <th>
-                            Category
-                          </th>
-                          <th>
-                            Product
-                          </th>
-                          <th>
-                            Added By
-                          </th>
-                          <th>
-                            Date
-                          </th>
-                          <th>
-                            Action
-                          </th>
-                        </tr>
-                      </thead>
-                      
-                    </table>
+                 <table class="table table-striped" id="stocksTable">
+                     <thead>
+                         <tr>
+                             <th>Image</th>
+                             <th>Serial No</th>
+                             <th>Category</th>
+                             <th>Product</th>
+                             <th>Added By</th>
+                             <th>Date</th>
+                             <th>Action</th>
+                         </tr>
+                     </thead>
+                 </table>
+
+
+
+
                   </div>
                 </div>
               </div>
@@ -145,7 +137,53 @@
   <script src="../../js/file-upload.js"></script>
   <!-- End custom js for this page-->
 
+  <!-- jQuery + DataTables -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
+
+<script>
+$(document).ready(function () {
+    $('#stocksTable').DataTable({
+        processing: true,
+        serverSide: false, // we’ll load all and let DataTables handle display
+        ajax: '{{ route('stocks.data') }}',
+        columns: [
+            {
+                data: 'product_image',
+                render: function (data, type, row) {
+                    return `<img src="/${data}" width="50" height="50" class="rounded">`;
+                }
+            },
+            { data: 'serial' },
+            { data: 'category' },
+            { data: 'product' },
+            { 
+                data: 'user',
+                render: function (data) {
+                    return data ? data.name : 'N/A';
+                }
+            },
+            {
+                data: 'created_at',
+                render: function (data) {
+                    return new Date(data).toLocaleDateString();
+                }
+            },
+            {
+                data: 'id',
+                render: function (data, type, row) {
+                    return `
+                        <button class="btn btn-sm btn-info">Edit</button>
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    `;
+                }
+            }
+        ]
+    });
+});
+</script>
 
 </body>
 
