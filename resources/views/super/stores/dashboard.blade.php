@@ -10,8 +10,7 @@
                   <div
                     class="d-flex flex-row align-items-center flex-wrap justify-content-md-center justify-content-xl-start py-1">
                     <div class="ml-3 ml-md-0 ml-xl-3">
-                      <h2 class="text-white font-weight-bold">0 In-Stock</h2>
-                      <p class="mt-2 text-white card-text"><span>Electronic: 0</span><br><span>Non-Electronic: 0</span></p>
+                      <h2 class="text-white font-weight-bold" id="inStockCount">0 In-Stock</h2>
                     </div>
                   </div>
                 </div>
@@ -23,8 +22,7 @@
                   <div
                     class="d-flex flex-row align-items-center flex-wrap justify-content-md-center justify-content-xl-start py-1">
                     <div class="ml-3 ml-md-0 ml-xl-3">
-                      <h2 class="text-white font-weight-bold">0  Out-Stock</h2>
-                      <p class="mt-2 text-white card-text"><span>Electronic: 0</span><br><span>Non-Electronic: 0</span></p>
+                      <h2 class="text-white font-weight-bold" id="outStockCount">0 Out-Stock</h2>
                     </div>
                   </div>
                 </div>
@@ -36,8 +34,7 @@
                   <div
                     class="d-flex flex-row align-items-center flex-wrap justify-content-md-center justify-content-xl-start py-1">
                     <div class="ml-3 ml-md-0 ml-xl-3">
-                      <h2 class="text-white font-weight-bold">0 Available Stock</h2>
-                      <p class="mt-2 text-white card-text"><span>Electronic: 0</span><br><span>Non-Electronic: 0</span></p>
+                      <h2 class="text-white font-weight-bold" id="availableStockCount">0 Available Stock</h2>
                     </div>
                   </div>
                 </div>
@@ -51,31 +48,22 @@
                 <div class="card-body">
                   <h4 class="card-title">New Out-Stocks  <input type="text"  style="float:right" id="searchInput" placeholder="Search stock..."></h4> 
                   <div class="table-responsive">
-                  <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>
-                            Serial No
-                          </th>
-                          <th>
-                            Category
-                          </th>
-                          <th>
-                            Product
-                          </th>
-                          <th>
-                            Given To
-                          </th>
-                          <th>
-                            Date
-                          </th>
-                          <th>
-                            Action
-                          </th>
-                        </tr>
-                      </thead>
-                      
-                    </table>
+                  <table class="table table-striped" id="outStockTable">
+                    <thead>
+                      <tr>
+                        <th>Serial No</th>
+                        <th>Category</th>
+                        <th>Product</th>
+                        <th>Given To</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Ajax will populate rows here -->
+                    </tbody>
+                  </table>
+
                   </div>
                 </div>
               </div>
@@ -102,12 +90,77 @@
         });
     });
 </script>
+
+
+<script>
+$(document).ready(function () {
+    // Fetch stats on page load
+    fetchStats();
+
+    function fetchStats() {
+        $.ajax({
+            url: "{{ route('stocks.stats') }}",
+            method: "GET",
+            success: function (data) {
+                $("#inStockCount").text(data.inStock + " In-Stock");
+                $("#outStockCount").text(data.outStock + " Out-Stock");
+                $("#availableStockCount").text(data.availableStock + " Available Stock");
+                $("#todayStockCount").text("(" + data.todayStock + " today)");
+            }
+        });
+    }
+
+    // Refresh every 30 seconds (optional)
+    setInterval(fetchStats, 30000);
+});
+</script>
+
+
+<script>
+$(document).ready(function () {
+    fetchOutStocks();
+
+    function fetchOutStocks() {
+        $.ajax({
+            url: "{{ route('outstocks.list') }}",
+            method: "GET",
+            success: function (data) {
+                let tbody = $("#outStockTable tbody");
+                tbody.empty();
+        
+                if (data.length > 0) {
+                    $.each(data, function (index, out) {
+                        let row = `
+                            <tr>
+                                <td>${out.product ? out.product.serial : '-'}</td>
+                                <td>${out.shelf ? out.shelf.shelf_name : '-'}</td>
+                                <td>${out.product ? out.product.product : '-'}</td>
+                                <td>${out.assigned_to ?? '-'}</td>
+                                <td>${out.created_at ? new Date(out.created_at).toLocaleDateString() : '-'}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">View</button>
+                                </td>
+                            </tr>
+                        `;
+                        tbody.append(row);
+                    });
+                } else {
+                    tbody.append('<tr><td colspan="6" class="text-center">No records found</td></tr>');
+                }
+            }
+        });
+
+    }
+});
+</script>
+
+
         <!-- partial:./partials/_footer.html -->
         <footer class="footer">
           <div class="card">
             <div class="card-body">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © GAF 2024</span>
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © GAF 2025</span>
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Built By: <a href="#" target="_blank">M.A.K.E Innovation</a></span>
               </div>
             </div>

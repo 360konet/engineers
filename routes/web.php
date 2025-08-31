@@ -254,10 +254,23 @@ Route::get('/delete-department/{id}', [DepartmentController::class, 'deletedepar
 
 //Stores
 Route::get('/stores-dashboard', [StoresController::class, 'stores_dashboard']);
+Route::get('/stocks/stats', [StoresController::class, 'getStockStats'])->name('stocks.stats');
+Route::get('/out-stocks/list', [StoresController::class, 'getOutStocks'])->name('outstocks.list');
+Route::post('/shelves', [StoresController::class, 'store_shelf'])->name('shelves.store');
+Route::get('/shelves', [StoresController::class, 'index'])->name('shelves.index');
+Route::put('/shelves/update/{id}', [StoresController::class, 'update_shelf'])->name('shelves.update');
+Route::delete('/shelves/delete/{id}', [StoresController::class, 'destroy_shelf'])->name('shelves.destroy');
 Route::get('/stores-in-stock', [StoresController::class, 'stores_in_stock']);
 Route::post('/stocks/store', [StoresController::class, 'store'])->name('stocks.store');
 Route::get('/stocks/data', [StoresController::class, 'getStocks'])->name('stocks.data');
+Route::put('/stocks/{id}', [StoresController::class, 'update'])->name('stocks.update');
+Route::delete('/stocks/{id}', [StoresController::class, 'destroy'])->name('stocks.destroy');
+
 Route::get('stores-out-stock', [StoresController::class, 'stores_out_stock']);
+Route::get('/stores/out-stock/data', [StoresController::class, 'getOutStockData'])->name('out.stock.data');
+Route::get('/stores/out-stock', [StoresController::class, 'stores_out_stock'])->name('out.stock');
+Route::get('/stores/shelf/{id}/products', [StoresController::class, 'getProductsByShelf']);
+Route::post('/stores/out-stock/assign', [StoresController::class, 'assignOutStock'])->name('out.stock.assign');
 
 
 });

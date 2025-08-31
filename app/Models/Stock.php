@@ -14,6 +14,8 @@ class Stock extends Model
         'user_id',
         'serial',
         'product',
+        'qty',
+        'details',
         'product_image',
     ];
 
@@ -21,6 +23,12 @@ class Stock extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Shelf::class, 'category'); // 'category' is the actual FK column in stocks table
+    }
+
 
 }
 

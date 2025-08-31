@@ -9,36 +9,54 @@
                 <div class="card-body">
                   <h4 class="card-title">Out-Stock Portal</h4>
                   <p class="card-description">Welcome to the out-stock portal to assign stock(s)</p>
-                  <form class="form-inline" action="#" method="POST"  enctype="multipart/form-data">
-                    @csrf
-                   <div class="input-group mb-2 mr-sm-2">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">Category</div>
+                  <form class="form-inline" action="{{ route('out.stock.assign') }}" method="POST">
+                      @csrf
+                      <div class="input-group mb-2 mr-sm-2">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text">Shelf</div>
+                          </div>
+                          <select name="shelf_id" required class="form-control" id="shelfSelect">
+                              <option value="">--Select Shelf--</option>
+                              @foreach($shelves as $shelf)
+                                  <option value="{{ $shelf->id }}">{{ $shelf->shelf_name }}</option>
+                              @endforeach
+                          </select>
                       </div>
-                      <select name="" required class="form-control" id="inlineFormInputGroupUsername2">
-                        <option value="">--Select Category--</option>
-                        <option value="Electronic">Electronic</option>
-                        <option value="Non-Electronic">Non-Electronic</option>
-                      </select>
-                    </div>
-                    <div class="input-group mb-2 mr-sm-2">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">Product</div>
+                  
+                      <div class="input-group mb-2 mr-sm-2">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text">Product</div>
+                          </div>
+                          <select name="product_id" required class="form-control" id="productSelect">
+                              <option value="">--Select Product--</option>
+                          </select>
                       </div>
-                      <select name="" required class="form-control" id="inlineFormInputGroupUsername2">
-                        <option value="">--Select Product--</option>
-                        <option value="Computer">Computer - SBN001</option>
-                        <option value="Mouse">Mouse - SBN002</option>
-                      </select>
-                    </div>
-                    <div class="input-group mb-2 mr-sm-2">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">Assigned To</div>
+                  
+                      <div class="input-group mb-2 mr-sm-2">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text">Quantity Needed</div>
+                          </div>
+                          <input name="quantity" type="number" min="1" required class="form-control" id="quantityInput" placeholder="Enter Quantity">
+                          <small id="maxQtyText" class="text-danger ml-2"></small>
                       </div>
-                      <input name="" required class="form-control" id="inlineFormInputGroupUsername2" placeholder="Enter Reciever">
-                    </div>
-                    <button type="submit" class="btn btn-primary mb-2">Assign Stock</button>
+                  
+                      <div class="input-group mb-2 mr-sm-2">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text">Assigned To</div>
+                          </div>
+                          <input name="assigned_to" required class="form-control" placeholder="Enter Receiver">
+                      </div>
+                  
+                      <div class="input-group mb-2 mr-sm-2">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text">Remarks</div>
+                          </div>
+                          <input name="remarks" class="form-control" placeholder="Enter Remarks">
+                      </div>
+                  
+                      <button type="submit" class="btn btn-primary mb-2">Assign Stock</button>
                   </form>
+
                 </div>
               </div>
             </div>
@@ -50,32 +68,20 @@
                   <div class="table-responsive">
                   <table class="table table-striped">
                       <thead>
-                        <tr>
-                          <th>
-                            Image
-                          </th>
-                          <th>
-                            Serial No
-                          </th>
-                          <th>
-                            Category
-                          </th>
-                          <th>
-                            Product
-                          </th>
-                          <th>
-                            Assigned To
-                          </th>
-                          <th>
-                            Date
-                          </th>
-                          <th>
-                            Action
-                          </th>
-                        </tr>
+                          <tr>
+                              <th>Image</th>
+                              <th>Category</th>
+                              <th>Product</th>
+                              <th>Assigned To</th>
+                              <th>Date</th>
+                              <th>Action</th>
+                          </tr>
                       </thead>
-                      
-                    </table>
+                      <tbody id="outStockTableBody">
+                          <!-- Data will load here -->
+                      </tbody>
+                  </table>
+
                   </div>
                 </div>
               </div>
@@ -107,7 +113,7 @@
           <div class="card">
             <div class="card-body">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © GAF 2024</span>
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © GAF 2025</span>
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Built By: <a href="#" target="_blank">M.A.K.E Innovation</a></span>
              </div>
             </div>
@@ -139,6 +145,71 @@
   <!-- Custom js for this page-->
   <script src="../../js/file-upload.js"></script>
   <!-- End custom js for this page-->
+
+
+<script>
+$(document).ready(function () {
+    $('#shelfSelect').on('change', function () {
+        let shelfId = $(this).val();
+        $('#productSelect').empty().append('<option value="">--Select Product--</option>');
+        if (shelfId) {
+            $.getJSON('/stores/shelf/' + shelfId + '/products', function (data) {
+                $.each(data, function (key, product) {
+                    $('#productSelect').append(
+                        `<option value="${product.id}" data-qty="${product.quantity}">
+                            ${product.product_name} (Available: ${product.quantity})
+                        </option>`
+                    );
+                });
+            });
+        }
+    });
+
+    // Validate quantity
+    $('#productSelect').on('change', function () {
+        let maxQty = $(this).find(':selected').data('qty');
+        $('#quantityInput').attr('max', maxQty);
+    });
+});
+
+
+
+$(document).ready(function () {
+    // Fetch and display Out-Stock data
+    function loadOutStockData() {
+        $.getJSON("{{ route('out.stock.data') }}", function (data) {
+            let rows = '';
+            $.each(data, function (index, stock) {
+                rows += `
+                    <tr>
+                        <td><img src="${stock.product?.product_image ?? 'default.png'}" width="50"></td>
+                        <td>${stock.shelf?.shelf_name ?? '-'}</td>
+                        <td>${stock.product?.product ?? '-'}</td>
+                        <td>${stock.assigned_to}</td>
+                        <td>${new Date(stock.created_at).toLocaleDateString()}</td>
+                        <td><button class="btn btn-sm btn-danger deleteBtn" data-id="${stock.id}">Delete</button></td>
+                    </tr>
+                `;
+            });
+            $('#outStockTableBody').html(rows);
+        });
+    }
+
+    // Initial load
+    loadOutStockData();
+
+    // Filter/search (already added)
+    $("#searchInput").on("input", function () {
+        var searchText = $(this).val().toLowerCase();
+        $("#outStockTableBody tr").each(function () {
+            var rowText = $(this).text().toLowerCase();
+            $(this).toggle(rowText.includes(searchText));
+        });
+    });
+});
+
+</script>
+
 
 
 
