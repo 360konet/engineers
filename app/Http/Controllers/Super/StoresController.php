@@ -25,6 +25,12 @@ class StoresController extends Controller
     }
 
 
+    public function show($id)
+    {
+        $out = OutStock::with(['product', 'shelf', 'user'])->findOrFail($id);
+        return response()->json($out);
+    }
+
 
 
     public function getStockStats()

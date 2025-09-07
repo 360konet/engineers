@@ -254,6 +254,7 @@ Route::get('/delete-department/{id}', [DepartmentController::class, 'deletedepar
 
 //Stores
 Route::get('/stores-dashboard', [StoresController::class, 'stores_dashboard']);
+Route::get('/outstocks/{id}', [StoresController::class, 'show']);
 Route::get('/stocks/stats', [StoresController::class, 'getStockStats'])->name('stocks.stats');
 Route::get('/out-stocks/list', [StoresController::class, 'getOutStocks'])->name('outstocks.list');
 Route::post('/shelves', [StoresController::class, 'store_shelf'])->name('shelves.store');

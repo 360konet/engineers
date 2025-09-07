@@ -114,7 +114,7 @@
             <div class="card-body">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © GAF 2025</span>
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Built By: <a href="#" target="_blank">M.A.K.E Innovation</a></span>
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Built By: <a href="#" target="_blank">Selorm Innovation</a></span>
              </div>
             </div>
           </div>
