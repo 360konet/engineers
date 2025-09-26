@@ -49,7 +49,7 @@
               <li class="nav-item"> <a class="nav-link" href="{{url('/architect')}}">Architect</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{url('/electricals')}}">Electricals</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{url('/civil')}}">Civil Works</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{url('/quantity')}}">Quantitative Surveyors</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{url('/quantity')}}">Quantity surveyors</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{url('/orderly')}}">Orderly Room</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{url('/finances')}}">Finance</a></li>
             </ul>
@@ -67,7 +67,7 @@
               <li class="nav-item"> <a class="nav-link" href="{{url('/architect-works')}}"> Architect Works </a></li>
               <li class="nav-item"> <a class="nav-link" href="{{url('/electrical-works')}}"> Electrical Works </a></li>
               <li class="nav-item"> <a class="nav-link" href="{{url('/civil-works')}}"> Civil Works </a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{url('/quantitative-surveyors-works')}}"> Quantitative Surveyors Works </a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{url('/quantitative-surveyors-works')}}"> Quantity surveyors Works </a></li>
               <li class="nav-item"> <a class="nav-link" href="{{url('/orderly-room-operations')}}"> Orderly Room Operations</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{url('/finance')}}"> Finance </a></li>
               <li class="nav-item"> <a class="nav-link" href="{{url('/completed-works')}}"> Completed Works </a></li>

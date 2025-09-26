@@ -24,7 +24,7 @@
                         <div class="input-group-text">Status</div>
                       </div>
                       <select name="project_department" readonly required class="form-control" id="inlineFormInputGroupUsername2">
-                         <option value="Quantitative Surveyors Backup" selected>Backup</option>
+                         <option value="Quantity surveyors Backup" selected>Backup</option>
                       </select>
                     </div>
                     <div class="input-group mb-2 mr-sm-2">
@@ -101,7 +101,7 @@
                             <option value="Architect">Architect</option>
                             <option value="Electricals">Electricals</option>
                             <option value="Civil Works">Civil Works</option>
-                            <option value="Quantitative Surveyors">Quantitative Surveyors</option>
+                            <option value="Quantity surveyors">Quantity surveyors</option>
                             <option value="Orderly Room">Orderly Room</option>
                             <option value="Finance">Finance</option>
                             <option value="">--Change General Status--</option>

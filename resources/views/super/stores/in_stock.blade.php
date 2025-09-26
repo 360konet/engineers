@@ -10,11 +10,11 @@
                  <h4 class="card-title">
                     In-Stock Portal
                     <button style="float:right; margin-left:10px;" class="btn btn-primary" data-toggle="modal" data-target="#addShelfModal">
-                        + Add Shelf
+                        + Add Shed
                     </button>
                     
                     <button style="float:right;" class="btn btn-secondary" data-toggle="modal" data-target="#viewShelfModal">
-                        View Shelf
+                        View Shed
                     </button>
                 </h4>
                 
@@ -25,7 +25,7 @@
                             @csrf
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="addShelfModalLabel">Add Shelf</h5>
+                                    <h5 class="modal-title" id="addShelfModalLabel">Add Shed</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -33,18 +33,18 @@
                                 
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label for="shelf_id">Shelf ID</label>
+                                        <label for="shelf_id">Shed ID</label>
                                         <input type="text" name="shelf_id" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="shelf_name">Shelf Name</label>
+                                        <label for="shelf_name">Shed Name</label>
                                         <input type="text" name="shelf_name" class="form-control" required>
                                     </div>
                                 </div>
                                 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Save Shelf</button>
+                                    <button type="submit" class="btn btn-primary">Save Shed</button>
                                 </div>
                             </div>
                         </form>
@@ -56,7 +56,7 @@
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">View Shelves</h5>
+                                <h5 class="modal-title">View Shed</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -66,8 +66,8 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Shelf ID</th>
-                                            <th>Shelf Name</th>
+                                            <th>Shed ID</th>
+                                            <th>Shed Name</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -100,7 +100,7 @@
                                                         @method('PUT')
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">Edit Shelf</h5>
+                                                                <h5 class="modal-title">Edit Shed</h5>
                                                                 <button type="button" class="close" data-dismiss="modal">
                                                                     <span>&times;</span>
                                                                 </button>
@@ -108,18 +108,18 @@
                 
                                                             <div class="modal-body">
                                                                 <div class="form-group">
-                                                                    <label for="shelf_id">Shelf ID</label>
+                                                                    <label for="shelf_id">Shed ID</label>
                                                                     <input type="text" name="shelf_id" class="form-control" value="{{ $shelf->shelf_id }}" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="shelf_name">Shelf Name</label>
+                                                                    <label for="shelf_name">Shed Name</label>
                                                                     <input type="text" name="shelf_name" class="form-control" value="{{ $shelf->shelf_name }}" required>
                                                                 </div>
                                                             </div>
                 
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                <button type="submit" class="btn btn-primary">Update Shelf</button>
+                                                                <button type="submit" class="btn btn-primary">Update Shed</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -146,10 +146,10 @@
                   
                       <div class="input-group mb-2 mr-sm-2">
                           <div class="input-group-prepend">
-                              <div class="input-group-text">Shelf</div>
+                              <div class="input-group-text">Shed</div>
                           </div>
                           <select name="category" required class="form-control">
-                              <option value="">--Select Shelf--</option>
+                              <option value="">--Select Shed--</option>
                                 @foreach($shelves as $shelf)
                                     <option value="{{ $shelf->id }}">{{ $shelf->shelf_name }}</option>  
                                 @endforeach
@@ -240,7 +240,7 @@
                 <input type="hidden" id="editStockId" name="id">
 
                 <div class="form-group">
-                    <label>Shelf</label>
+                    <label>Shed</label>
                     <select name="category" id="editCategory" class="form-control" required>
                         <option value="">-- Select Shelf --</option>
                         @foreach($shelves as $shelf)

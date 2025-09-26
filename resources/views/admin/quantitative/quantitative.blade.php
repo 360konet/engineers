@@ -8,8 +8,8 @@
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Quantitative Surveyors Works ({{$qcount}})<input type="text"  style="float:right" id="searchInput" placeholder="Search projects..."></h4>
-                  <p class="card-description">Quantitative surveyors projects/works being worked on</p>
+                  <h4 class="card-title">Quantity surveyors Works ({{$qcount}})<input type="text"  style="float:right" id="searchInput" placeholder="Search projects..."></h4>
+                  <p class="card-description">Quantity surveyors projects/works being worked on</p>
                   <div class="table-responsive">
                     <table class="table table-striped">
                       <thead>
@@ -62,7 +62,7 @@
                                 <option value="Architect">Architect</option>
                                 <option value="Electricals">Electricals</option>
                                 <option value="Civil Works">Civil Works</option>
-                                <option value="Quantitative Surveyors">Quantitative Surveyors</option>
+                                <option value="Quantity surveyors">Quantity surveyors</option>
                                 <option value="Orderly Room">Orderly Room</option>
                                 <option value="Finance">Finance</option>
                                 <option value=""><b>--Change Status--</b></option>

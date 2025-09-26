@@ -38,7 +38,7 @@ class LoginController extends Controller
                 return redirect('/electricals');
             case 'Civil Works':
                 return redirect('/civil');
-            case 'Quantitative Surveyors':
+            case 'Quantity surveyors':
                 return redirect('/quantity');
             case 'Orderly Room':
                 return redirect('/orderly');

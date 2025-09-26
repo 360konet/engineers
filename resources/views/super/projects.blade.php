@@ -28,7 +28,7 @@
                         <option value="Architect">Architect</option>
                         <option value="Electricals">Electricals</option>
                         <option value="Civil Works">Civil Works</option>
-                        <option value="Quantitative Surveyors">Quantitative Surveyors</option>
+                        <option value="Quantity surveyors">Quantity surveyors</option>
                         <option value="Orderly Room">Orderly Room</option>
                         <option value="Finance">Finance</option>
                         <option value="">--Change Status--</option>
@@ -111,7 +111,7 @@
                                 <option value="Architect">Architect</option>
                                 <option value="Electricals">Electricals</option>
                                 <option value="Civil Works">Civil Works</option>
-                                <option value="Quantitative Surveyors">Quantitative Surveyors</option>
+                                <option value="Quantity surveyors">Quantity surveyors</option>
                                 <option value="Orderly Room">Orderly Room</option>
                                 <option value="Finance">Finance</option>
                                 <option value=""><b>--Change Status--</b></option>

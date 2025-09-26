@@ -28,16 +28,16 @@
                         <option value="Architect">Architect</option>
                         <option value="Electricals">Electricals</option>
                         <option value="Civil Works">Civil Works</option>
-                        <option value="Quantitative Surveyors">Quantitative Surveyors</option>
+                        <option value="Quantity surveyors">Quantity surveyors</option>
                         <option value="Orderly Room">Orderly Room</option>
                         <option value="Finance">Finance</option>
                         <option value="">--Change General Status--</option>
                         <option value="Pending Project">Pending Project</option>
                         <option value="Completed Project">Completed Project</option>
-                        <option value="">--Change Quantitative Surveyors Status--</option>
-                        <option value="Quantitative Surveyors Pending Project">Quantitative Surveyors Pending Project</option>
-                        <option value="Quantitative Surveyors Completed Project" selected>Quantitative Surveyors Completed Project</option>
-                        <option value="Quantitative Surveyors Backup">Backup</option>
+                        <option value="">--Change Quantity surveyors Status--</option>
+                        <option value="Quantity surveyors Pending Project">Quantity surveyors Pending Project</option>
+                        <option value="Quantity surveyors Completed Project" selected>Quantity surveyors Completed Project</option>
+                        <option value="Quantity surveyors Backup">Backup</option>
                       </select>
                     </div>
                     <div class="input-group mb-2 mr-sm-2">
@@ -62,7 +62,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Completed Projects ({{$qcount}})<input type="text"  style="float:right" id="searchInput" placeholder="Search projects..."></h4>
-                  <p class="card-description">Completed Quantitative Surveyors projects </p>
+                  <p class="card-description">Completed Quantity surveyors projects </p>
                   <div class="table-responsive">
                     <table class="table table-striped">
                       <thead>
@@ -114,16 +114,16 @@
                             <option value="Architect">Architect</option>
                             <option value="Electricals">Electricals</option>
                             <option value="Civil Works">Civil Works</option>
-                            <option value="Quantitative Surveyors">Quantitative Surveyors</option>
+                            <option value="Quantity surveyors">Quantity surveyors</option>
                             <option value="Orderly Room">Orderly Room</option>
                             <option value="Finance">Finance</option>
                             <option value="">--Change General Status--</option>
                             <option value="Pending Project">Pending Project</option>
                             <option value="Completed Project">Completed Project</option>
-                            <option value="">--Change Quantitative Surveyors Status--</option>
-                            <option value="Quantitative Surveyors Pending Project">Quantitative Surveyors Pending Project</option>
-                            <option value="Quantitative Surveyors Completed Project">Quantitative Surveyors Completed Project</option>
-                            <option value="Quantitative Surveyors Backup">Backup</option>
+                            <option value="">--Change Quantity surveyors Status--</option>
+                            <option value="Quantity surveyors Pending Project">Quantity surveyors Pending Project</option>
+                            <option value="Quantity surveyors Completed Project">Quantity surveyors Completed Project</option>
+                            <option value="Quantity surveyors Backup">Backup</option>
                             </select>
                           </td>
                           <td><button type="submit" class="btn btn-primary mb-2">Share</button></p></td>

@@ -15,8 +15,8 @@ class QuantitativeController extends Controller
     //
     public function quantitative_surveyors_works(){
         $currentDateTime = now();
-        $projects = Projects::where('project_department','Quantitative Surveyors')->latest()->get();
-        $qcount = Projects::where('project_department','Quantitative Surveyors')->count();
+        $projects = Projects::where('project_department','Quantity surveyors')->latest()->get();
+        $qcount = Projects::where('project_department','Quantity surveyors')->count();
 
         return view('admin.quantitative.quantitative',compact('currentDateTime','projects','qcount'));
    
@@ -35,8 +35,8 @@ class QuantitativeController extends Controller
 
     public function quantity(){
         $currentDateTime = now();
-        $qcount = Projects::where('project_department','Quantitative Surveyors')->count();
-        $qprojects = Projects::where('project_department','Quantitative Surveyors')->latest()->get();
+        $qcount = Projects::where('project_department','Quantity surveyors')->count();
+        $qprojects = Projects::where('project_department','Quantity surveyors')->latest()->get();
         
         return view('departments.quantity.quantity',compact('currentDateTime','qcount','qprojects'));
     }
@@ -53,8 +53,8 @@ class QuantitativeController extends Controller
 
     public function quantity_share(){
         $currentDateTime = now();
-        $qcount = Projects::where('project_department','Quantitative Surveyors')->count();
-        $qprojects = Projects::where('project_department','Quantitative Surveyors')->latest()->get();
+        $qcount = Projects::where('project_department','Quantity surveyors')->count();
+        $qprojects = Projects::where('project_department','Quantity surveyors')->latest()->get();
 
 
         return view('departments.quantity.quantity_share',compact('currentDateTime','qcount','qprojects'));
@@ -89,8 +89,8 @@ class QuantitativeController extends Controller
 
     public function quantity_backup(){
         $currentDateTime = now();
-        $qcount = Projects::where('project_department','Quantitative Surveyors Backup')->count();
-        $qprojects = Projects::where('project_department','Quantitative Surveyors Backup')->latest()->get();
+        $qcount = Projects::where('project_department','Quantity surveyors Backup')->count();
+        $qprojects = Projects::where('project_department','Quantity surveyors Backup')->latest()->get();
 
 
         return view('departments.quantity.quantity_backup',compact('currentDateTime','qcount','qprojects'));
@@ -116,8 +116,8 @@ class QuantitativeController extends Controller
 
     public function quantity_pending(){
         $currentDateTime = now();
-        $qcount = Projects::where('project_department','Quantitative Surveyors Pending Project')->count();
-        $qprojects = Projects::where('project_department','Quantitative Surveyors Pending Project')->latest()->get();
+        $qcount = Projects::where('project_department','Quantity surveyors Pending Project')->count();
+        $qprojects = Projects::where('project_department','Quantity surveyors Pending Project')->latest()->get();
 
         return view('departments.quantity.quantity_pending',compact('currentDateTime','qcount','qprojects'));
     }
@@ -161,8 +161,8 @@ class QuantitativeController extends Controller
 
     public function quantity_completed(){
         $currentDateTime = now();
-        $qcount = Projects::where('project_department','Quantitative Surveyors Completed Project')->count();
-        $qprojects = Projects::where('project_department','Quantitative Surveyors Completed Project')->latest()->get();
+        $qcount = Projects::where('project_department','Quantity surveyors Completed Project')->count();
+        $qprojects = Projects::where('project_department','Quantity surveyors Completed Project')->latest()->get();
 
         return view('departments.quantity.quantity_completed',compact('currentDateTime','qcount','qprojects'));
     }

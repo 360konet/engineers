@@ -114,7 +114,7 @@
         <ul class="navbar-nav mr-lg-2">
             <li class="nav-item nav-search d-none d-lg-block">
                 <div class="input-group">
-                    <input type="text" class="form-control" id="departmentSearch" readonly placeholder="GAF, Quantitative Surveyors Department" aria-label="search" aria-describedby="search">
+                    <input type="text" class="form-control" id="departmentSearch" readonly placeholder="GAF, Quantity surveyors Department" aria-label="search" aria-describedby="search">
                 </div>
             </li>
         </ul>

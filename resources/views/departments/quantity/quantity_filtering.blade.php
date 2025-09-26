@@ -8,7 +8,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Filteration Portal</h4>
-                  <p class="card-description">Welcome to the filteration portal to sort out Quantitative Surveyors projects</p>
+                  <p class="card-description">Welcome to the filteration portal to sort out Quantity surveyors projects</p>
                   <form class="form-inline" action="{{url('/filter-projects')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                    <label class="sr-only" for="inlineFormInputGroupUsername2">Project Name</label>

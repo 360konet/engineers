@@ -13,10 +13,10 @@
                       @csrf
                       <div class="input-group mb-2 mr-sm-2">
                           <div class="input-group-prepend">
-                              <div class="input-group-text">Shelf</div>
+                              <div class="input-group-text">Shed</div>
                           </div>
                           <select name="shelf_id" required class="form-control" id="shelfSelect">
-                              <option value="">--Select Shelf--</option>
+                              <option value="">--Select Shed--</option>
                               @foreach($shelves as $shelf)
                                   <option value="{{ $shelf->id }}">{{ $shelf->shelf_name }}</option>
                               @endforeach

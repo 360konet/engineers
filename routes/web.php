@@ -93,7 +93,7 @@ Route::post('/forward-civil-completed/{id}', [CivilController::class, 'civil_dep
 Route::post('/backup-civil-project', [CivilController::class, 'backup_civil_project']);
 
 
-//Quantitative Surveyors
+//Quantity surveyors
 Route::get('/quantity', [QuantitativeController::class, 'quantity']);
 Route::post('/forward-quantity/{id}', [QuantitativeController::class, 'quantity_department_forward']);
 Route::get('/quantity-share', [QuantitativeController::class, 'quantity_share']);
@@ -180,7 +180,7 @@ Route::post('/civil-forward/{id}', [CivilController::class, 'civil_forward']);
 
 
 
-//Quantitative Surveyors Works
+//Quantity surveyors Works
 Route::get('/quantitative-surveyors-works', [QuantitativeController::class, 'quantitative_surveyors_works']);
 Route::post('/quantitative-forward/{id}', [QuantitativeController::class, 'quantitative_forward']);
 
